@@ -1,0 +1,13 @@
+﻿@model IEnumerable<MVC_Project.Models.ProductViewModel>
+
+@{
+    ViewData["Title"] = "DetailsVM";
+}
+
+<h1>DetailsVM</h1>
+
+<div>
+@*    <partial name="ProductPartial" model="Model" />*@
+    <!-- Render the body content using the partial view -->
+    @Html.Partial("ProductPartial", Model)
+</div>
