@@ -55,6 +55,7 @@ namespace Crud_With_WEB_API.Controllers
         public async Task<ActionResult<List<Product_Table>>> UpdateProduct(Product_Table prod)
         {
             return await _repository.UpdateProduct(prod);
+            
         }
 
 

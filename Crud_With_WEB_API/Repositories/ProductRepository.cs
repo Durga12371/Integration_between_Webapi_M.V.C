@@ -11,10 +11,18 @@ namespace Crud_With_WEB_API.Repositories
     public class ProductRepository : IProductRepository
     {
         private readonly IDbConnection dbConnection;
+        private IDbConnection @object;
+
         public ProductRepository(IConfiguration configuration)
         {
             this.dbConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
+
+        public ProductRepository(IDbConnection @object)
+        {
+            this.@object = @object;
+        }
+
         public async Task<List<Product_Table>> getAllEmployees()
         {
 

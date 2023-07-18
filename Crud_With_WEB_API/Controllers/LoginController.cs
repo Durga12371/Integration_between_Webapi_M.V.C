@@ -1,6 +1,7 @@
 ﻿using Crud_With_WEB_API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -21,6 +22,7 @@ namespace Crud_With_WEB_API.Controllers
         }
         private bool Autheticateuser(Users user)
         {
+            //var result = SignInManager.PasswordSignInAsync(user.Username, user.Password, false, false);
             bool _user = false;
             if (user.Username == "admin" && user.Password == "admin@123")
             {

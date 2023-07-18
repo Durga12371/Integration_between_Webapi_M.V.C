@@ -20,10 +20,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 
+
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<IProductRepository,ProductRepository>();
+builder.Services.AddSingleton<IProductRepository,ProductRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

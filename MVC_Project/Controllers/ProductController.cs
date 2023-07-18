@@ -31,7 +31,7 @@ namespace MVC_Project.Controllers
 
         public IActionResult Login()
         {
-
+            
             return View();
         }
         [HttpPost]
@@ -49,7 +49,7 @@ namespace MVC_Project.Controllers
                 _configuration["response"] = resposeData;
                // res = JsonConvert.DeserializeObject<response>(resposeData);
                  
-                TempData["msg"] = "Login Successfully";
+                TempData["msge"] = "Login Successfully";
                 ModelState.Clear();
                 return RedirectToAction("Index");
 
@@ -58,7 +58,7 @@ namespace MVC_Project.Controllers
             else
             {
                 ModelState.Clear();
-                TempData["msg"] = "Username or Password is incorrect";
+                TempData["msge"] = "Username or Password is incorrect";
             }
             return View();
 
@@ -136,14 +136,14 @@ namespace MVC_Project.Controllers
       
         public IActionResult Create()
         {
-
+            TempData.Clear();
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Product model)
         {
-            
+            TempData.Clear();
             String data=JsonConvert.SerializeObject(model);
             StringContent content=new StringContent(data,Encoding.UTF8,"application/json");
             JObject json = JObject.Parse(_configuration["response"]);
@@ -181,6 +181,7 @@ namespace MVC_Project.Controllers
         [HttpPost]
         public IActionResult Edit(Product model)
         {
+            TempData.Clear();
             String data = JsonConvert.SerializeObject(model);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
             HttpResponseMessage respose = _client.PutAsync(_client.BaseAddress + "/Product/UpdateProduct", content).Result;
@@ -203,8 +204,8 @@ namespace MVC_Project.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
-           
-              
+
+            TempData.Clear();
             HttpResponseMessage respose = _client.DeleteAsync(_client.BaseAddress + "/Product/deleteproduct/id?id=" + id).Result;
             if (respose.IsSuccessStatusCode)
             {
